@@ -1,0 +1,28 @@
+{
+    "name": "console-blog",
+    "version": "1.0.0",
+    "description": "Console.blog() is a tech blog featuring user authentication, the ability to post thoughts, receive comments on those thoughts, and create a user profile. This application utilizes MySQL, Express, Handlebars, Node, Express-Sessions, Bcrypt, and Sequelize as dependencies.",
+    "main": "server.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js",
+      "seed": "node seeds/seed.js",
+      "watch": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^5.0.0",
+      "connect-session-sequelize": "^7.0.4",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "express-handlebars": "^5.2.0",
+      "express-session": "^1.17.1",
+      "mysql2": "^2.2.5",
+      "sequelize": "^6.3.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
+  }
