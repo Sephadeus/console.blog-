@@ -1,7 +1,7 @@
 {
     "name": "console-blog",
     "version": "1.0.0",
-    "description": "Console.blog() is a tech blog featuring user authentication, the ability to post thoughts, receive comments on those thoughts, and create a user profile. This application utilizes MySQL, Express, Handlebars, Node, Express-Sessions, Bcrypt, and Sequelize as dependencies.",
+    "description": "Console.blog() is a tech blog featuring user authentication, the ability to post thoughts, receive comments on those thoughts, and create a user profile. This application utilizes MySQL, Express, Express-Sessions, Handlebars, Node, Express-Sessions, Bcrypt, and Sequelize as dependencies.",
     "main": "server.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
