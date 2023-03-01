@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth !important;
+  overflow-y: scroll;
+}
+
+:root {
+  --header-bg: rgba(17, 17, 17, 0.89);
+  --header-title: rgb(71, 194, 4);
+  --body-bg: rgb(11, 11, 11);
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2em;
+  background-color: var(--header-bg);
+  word-spacing: 0.5em;
+}
+
+.headliner {
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownBtn {
+  border: none;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 1.5em;
+  justify-content: center;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 30px;
+  height: 5px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.4s;
+  border-radius: 2px;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+
+.dropdownContent {
+    text-align: center;
+    opacity: 0;
+  right: 0;
+  color: var(--header-title);
+  font-family: "Roboto Serif";
+  border-radius: 1em;
+  background-color: var(--header-bg);
+  box-shadow: 2px 2px 2px 0px rgb(55, 55, 55);
+  position: absolute;
+  top: calc(100% * 0.25em);
+}
+
+.dropdownContent li {
+    list-style: none;
+    margin: 1.5em;
+    padding: 1em;
+    border-bottom: solid 3px rgb(55, 55, 55);
+}
+
+.dropdownContent a {
+    opacity: .5;
+    font-size: 1.3em;
+    text-decoration: none;
+    color: var(--header-title);
+}
+
+.dropdownContent a:hover {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.blog-title,
+.blog-slogan {
+  font-family: "Press Start 2P", "Roboto Serif";
+  color: var(--header-title);
+}
+
+.blog-slogan {
+  line-height: 2em;
+  margin: auto 0.6em;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+
+  header {
+    padding: 2em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blinkContainerConstant {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.blinkContainerConstant {
+  margin: 2em auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.blinkInfinite {
+  width: 0.5rem;
+  height: 1.8em;
+  background-color: white;
+  animation: blink 0.4s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    background-color: white;
+  }
+
+  50% {
+    background-color: transparent;
+  }
+}
+
+h1 {
+  font-size: rem;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+main {
+    padding: 3em;
+    overflow: none;
+    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto, fit-content);
+  gap: 3.5em;
+}
+
+.gridbox {
+    height: 20em;
+    width: 75vw;
+    background-color: var(--header-bg);
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 0px rgb(55, 55, 55);
+
+}
+
+footer {
+  bottom: 0;
+  margin: 0 auto;
+  text-align: start;
+  padding: 2em;
+  font-family: "Press Start 2P", "Roboto Serif";
+  background-color: var(--header-bg);
+  width: 100%;
+}
+
+footer ul a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+  color: var(--header-title);
+  opacity: 0.35;
+  font-size: 1.5em;
+  margin: 1.5em auto;
+}
+
+footer ul {
+    list-style: none;
+}
+footer a:hover {
+  color: rgb(255, 255, 255);
+  transition: color 1s;
+  opacity: 1;
+  transition: opacity 1s;
+}
