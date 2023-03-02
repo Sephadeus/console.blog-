@@ -11,7 +11,7 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    content: {
+    comment: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -41,3 +41,5 @@ Comment.init(
     modelName: "comment",
   }
 );
+
+module.exports = Comment;
