@@ -1,3 +1,5 @@
+const Handlebars = require('handlebars');
+
 module.exports = {
     format_date: (date) => {
       // Format date as MM/DD/YYYY
@@ -19,5 +21,17 @@ module.exports = {
         return `<span for="img" aria-label="gear">⚙️</span>`;
       }
     },
-  };
+    truncate_post: (p) => {
+      const maxLength = 250;
+      if (p.length > maxLength && p.length > 0) {
+        let cutStr = p + " ";
+        cutStr = p.substr(0, maxLength);
+        cutStr =  p.substr(0, cutStr.lastIndexOf(" "));
+        cutStr = 	cutStr.length > 0 ? cutStr : p.substr(0, maxLength);
+
+        return new Handlebars.SafeString(new_str + '...');
+      }
+      return str;
+      }
+    };
   
