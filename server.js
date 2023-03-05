@@ -1,11 +1,12 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
+const helpers = require('./utils/helpers')
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,7 +18,7 @@ const sess = {
     cookie: {
       maxAge: 300000,
       httpOnly: true,
-      secure: false,
+      secure: false, 
       sameSite: 'strict',
     },
     resave: false,
@@ -37,8 +38,12 @@ const sess = {
   app.use(express.static(path.join(__dirname, 'public')));
   
   app.use(routes);
+
+//   app.get('/login', (req, res) => {
+// res.render('login');
+// })
   
   sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on localhost:${PORT}`));
+    app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
   });
 

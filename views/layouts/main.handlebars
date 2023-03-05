@@ -1,39 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<htm lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Console Blog</title>
-  <link rel="stylesheet" href="../../public/css/style.css">
-</head>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Serif:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,500&display=swap" rel="stylesheet">
+  
+  <script>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Console.blog</a>
+  function btnTransform(x) {
+    x.classList.toggle("change");
+
+    var dC = document.getElementById("dropdownContent");
+    if(dC.value == 'visible') {
+      dC.style.opacity = 0;
+      dC.value = 'hidden';
+    } else {
+      dC.value = 'visible';
+      dC.style.opacity = 1;
+      dC.style.transition = "opacity  .4s" 
+    }
+  }
+
+  </script> 
+</head>
+  
+    <header>
+
+      <div class="headliner">
+      <h1 class="blog-title">
+        Console.blog()
       </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
+      <div class="blinkContainerConstant">
+      <p class="blog-slogan">Bringing</p> 
+      <p class="blog-slogan">Problem</p>
+      <p class="blog-slogan">Solvers</p>
+      <p class="blog-slogan">Together...</p>
+       <div class="blinkInfinite"></div>
+      </div>
+    </div>
+
+     <div class="dropdown">
+        <button class="dropdownBtn" onclick="{btnTransform(this)}">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </button>
+          <div id="dropdownContent" class="dropdownContent" value="hidden">
+            <ul>
+              <li class="dropItem"><a href="/homepage" class="dropLink">Home</a></li>
+              <li class="dropItem"><a href="/profile"  class="dropLink">Profile</a></li>
+              <li class="dropItem"><a href="/posts" class="dropLink">Posts</a></li>
+
+            </ul>
+
+          </div>
+     </div>
+
     </header>
 
-  <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+  <main>
       {{{ body }}}
     </main>
 
-      <!-- Render script for logged in users only -->
+ <footer id="footer">
+        <h3 class="blog-title">Console.blog()</h3>
+        <ul>
+            <li>
+                <div class="blinkContainer"> 
+                 <a href="/homepage" class="dropLink">Home</a>
+                  <div class="blinkHover">
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="blinkContainer"> 
+                <a href="/profile">Profile</a>
+                <div class="blinkHover">
+              </div>
+            </div>
+            </li>
+            <li>
+              <div class="blinkContainer"> 
+                <a href="/posts">Posts</a>
+                <div class="blinkHover">
+              </div>
+            </div>
+            </li>
+        </ul>
+    </footer>
+
+
+
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
 </body>
 
 </html>

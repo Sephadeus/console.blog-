@@ -1,3 +1,4 @@
+
 const loginUser = async (e) => {
     e.preventDefault();
     const username = document.getElementById('signInUser').value.trim();
@@ -18,3 +19,5 @@ const loginUser = async (e) => {
         }
     }
  }
+
+document.getElementById('login').addEventListener("click", loginUser);

@@ -3,78 +3,160 @@ const { Post, User, Comment } = require('../models');
 const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
 
-router.get('/', async(req,res) => {
-    try{
-        const postData = await Posts.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                }
-            ]
-        });
+// GET all posts for homepage
+router.get('/', async (req, res) => {
+	if(req.session.logged_in) {
+	try {
+		const postData = await Post.findAll({
+			attributes: [
+				'id',
+				'post_content',
+				'title',
+				'created_at',
+				'updated_at',
+				// use raw MySQL aggregate function query to get a count of how many comments are on each post and return it under the name `comment_count`
+				[
+					sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
+					'comment_count',
+				],
+			],
+			order: [['created_at', 'DESC']],
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				},
+			],
+		});
 
-        const posts = postData.map((post) => post.get({plain: true}));
+		const posts = postData.map((post) => post.get({ plain: true }));
 
-        res.render('homepage', {
-            posts,
-            logged_in: req.session.logged_in
-        });
-    }
-    catch (err){
-        res.status(500).json(err)
-    }
-})
+		res.render('homepage', {
+			posts,
+			logged_in: req.session.logged_in,
+			username: req.session.username,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	} 
+} else {
+	res.redirect('/login');
+}
+});
 
-router.get('/post/:id', async (req, res) =>{
-    try{
-        const postData = await Posts.findByPk(req.params.id, {
-            include:[
-                {
-                    model: User,
-                    attributes: ['username'],
-                }
-            ]
-        });
+// GET one post
+router.get('/post/:id', async (req, res) => {
+	try {
+		const postData = await Post.findByPk(req.params.id, {
+			attributes: [
+				'id',
+				'post_content',
+				'title',
+				'created_at',
+				'updated_at',
+				// use raw MySQL aggregate function query to get a count of how many comments are on each post and return it under the name `comment_count`
+				[
+					sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
+					'comment_count',
+				],
+			],
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				},
+				{
+					model: Comment,
+					attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at', 'updated_at'],
+					include: {
+						model: User,
+						attributes: ['username'],
+					},
+				},
+			],
+		});
 
-        const post = postData.get({plain: true});
+		const post = postData.get({ plain: true });
 
-        res.render('posts', {
-            ...post,
-            logged_in: req.session.logged_in
-        })
-    }
-    catch(err) {
-        res.status(500).json(err)
-    }
-})
+		res.render('readPost', {
+			...post,
+			logged_in: req.session.logged_in,
+			username: req.session.username,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
+// GET dashboard
 router.get('/profile', withAuth, async (req, res) => {
-    try{
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: {exclude: ['password']},
-            include: [{model: Post}]
-        })
+	try {
+		// find the logged in user based on the session ID
+		const userData = await User.findByPk(req.session.user_id, {
+			attributes: {
+				exclude: ['password'],
+				include: [
+					// sql query that will return total number of posts and comments for each user
+					[sequelize.literal('(SELECT COUNT(*) FROM post WHERE user.id = post.user_id)'), 'post_count'],
+					[
+						sequelize.literal('(SELECT COUNT(*) FROM comment WHERE user.id = comment.user_id)'),
+						'comment_count',
+					],
+				],
+			},
+			include: [
+				{
+					model: Post,
+					attributes: [
+						'id',
+						'title',
+						'post_content',
+						'created_at',
+						'updated_at',
+						// [
+						// 	sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
+						// 	'comment_count',
+						// ],
+					],
+					order: [['created_at', 'DESC']],
+					separate: true,
+				},
+				{
+					model: Comment,
+				},
+			],
+		});
 
-        const user = userData.get({plain:true});
+		const user = userData.get({ plain: true });
 
-        res.render('profile', {
-            ...user,
-            logged_in: true
-        });
-    }
-    catch(err){
+		res.render('profile', {
+			...user,
+			logged_in: true,
+			username: req.session.username,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
-    }
+// GET login
+router.get('/login', (req, res) => {
+	// If the user is already logged in, redirect the request to another route
+	if (req.session.logged_in) {
+		res.redirect('/profile');
+		return;
+	}
 
-  });
+	res.render('login');
+});
 
-router.get('/login', (req, res) =>{
-    if(req.session.logged_in){
-        res.redirect('/profile');
-        return;
-    }
-    res.render('login')
-})
+// GET signup
+router.get('/signup', (req, res) => {
+	res.render('signup');
+});
+
+router.get('/thankyou', (req, res) => {
+	res.render('thankyou');
+});
 
 module.exports = router;
