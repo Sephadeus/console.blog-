@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth');
 
 // GET all posts for homepage
 router.get('/', async (req, res) => {
-	if(req.session.logged_in) {
 	try {
 		const postData = await Post.findAll({
 			attributes: [
@@ -21,27 +20,16 @@ router.get('/', async (req, res) => {
 				],
 			],
 			order: [['created_at', 'DESC']],
-			include: [
-				{
-					model: User,
-					attributes: ['username'],
-				},
-			],
+			include: [User],
 		});
 
 		const posts = postData.map((post) => post.get({ plain: true }));
 
-		res.render('homepage', {
-			posts,
-			logged_in: req.session.logged_in,
-			username: req.session.username,
-		});
+		res.render('homepage', 
+		{posts});
 	} catch (err) {
-		res.status(500).json(err);
-	} 
-} else {
-	res.redirect('/login');
-}
+res.render('login')
+} 
 });
 
 // GET one post
