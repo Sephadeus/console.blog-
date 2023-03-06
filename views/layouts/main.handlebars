@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htm lang="en">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -29,6 +29,9 @@
   </script> 
 </head>
   
+  <body>
+    <div class="mainContainer">
+      
     <header>
 {{#if logged_in}}
 <button id="logout" class="logoutBtn">Log Out</button>
@@ -41,9 +44,12 @@
       <p class="blog-slogan">Bringing</p> 
       <p class="blog-slogan">Problem</p>
       <p class="blog-slogan">Solvers</p>
-      <p class="blog-slogan">Together...</p>
+      <div class="blinkLine">
+        <p class="blog-slogan">Together...</p>
        <div class="blinkInfinite"></div>
       </div>
+      </div>
+      
       {{#if logged_in}}
       <h3 class="welcomeUser">Welcome back, {{username}}!</h3>
       {{/if}}
@@ -59,7 +65,7 @@
             <ul>
               <li class="dropItem"><a href="/" class="dropLink">Home</a></li>
               <li class="dropItem"><a href="/profile"  class="dropLink">Profile</a></li>
-              <li class="dropItem"><a href="/posts" class="dropLink">Posts</a></li>
+              <li class="dropItem"><a href="/api/posts" class="dropLink">Posts</a></li>
 
             </ul>
 
@@ -74,7 +80,15 @@
     </main>
 
  <footer id="footer">
-        <h3 class="blog-title">Console.blog()</h3>
+ 
+  <div class="loggedInAs">
+    <h3 class="blog-title">Console.blog()</h3>
+     {{#if logged_in}}
+     <p class="welcomeUser">Logged in as {{username}} </p> 
+     {{/if}}
+  </div>
+     
+
         <ul>
             <li>
                 <div class="blinkContainer"> 
@@ -99,6 +113,7 @@
             </li>
         </ul>
     </footer>
+    </div>
 
 
 

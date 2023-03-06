@@ -29,9 +29,9 @@ module.exports = {
         cutStr =  p.substr(0, cutStr.lastIndexOf(" "));
         cutStr = 	cutStr.length > 0 ? cutStr : p.substr(0, maxLength);
 
-        return new Handlebars.SafeString(new_str + '...');
+        return new Handlebars.SafeString(cutStr + '...');
       }
-      return str;
+      return p;
       }
     };
   

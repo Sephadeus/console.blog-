@@ -10,6 +10,7 @@ html {
   position: relative;
   min-height: 100%;
   font-size: 16px;
+  font-family: 'Press Start 2P', 'Roboto Serif', monospace;
   scroll-behavior: smooth !important;
   /* overflow-y: scroll; */
 }
@@ -24,31 +25,36 @@ body {
   background-color: var(--body-bg);
   margin: 0;
   padding: 0;
+}
+
+.mainContainer {
+min-height: 80vh;
+min-height: 80dvh;
+display: grid;
+grid-template-rows: auto, 1fr, auto;
 
 }
 
-a {
+a, button {
+  font-family: 'Press Start 2P', 'Roboto Serif';
   text-decoration: none;
 }
 
 header {
   display: flex;
   flex-direction: row;
-  padding: 1.5em;
   justify-content: space-evenly;
   width: 100%;
+  padding: 2em;
   background-color: var(--header-bg);
   word-spacing: 0.5em;
 }
 
 
 footer {
-  padding: 3em;
   font-family: "Press Start 2P", "Roboto Serif";
   background-color: var(--header-bg);
-  position: static;
-    left: 0;
-    bottom: 0;
+ padding: 2em;
     width: 100%;
   
 }
@@ -60,7 +66,6 @@ footer li a {
   text-decoration: none;
   list-style: none;
   color: var(--header-title);
-  font-size: 1.5em;
   margin: 1em;
   padding: 1em;
   width: auto;
@@ -79,13 +84,25 @@ footer a:hover {
   transition: opacity 1s;
 }
 
+textarea {
+  height: fit-content;
+  min-height: 100px;
+  padding: 1em;
+  color: var(--header-title);
+  border-radius: 20px;
+  background-color: rgba(41, 41, 41, 0.885);
+  box-shadow: 2px 2px 2px 0px rgb(101, 101, 101);
+}
 
 .headliner {
-  margin: 2em auto;
+  margin: auto;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-content: center;
 }
+
 
 .dropdown {
   position: relative;
@@ -150,8 +167,7 @@ footer a:hover {
 }
 
 .dropdownContent a {
-    opacity: .5;
-    font-size: 1.3em;
+    opacity: .8;
     text-decoration: none;
     color: var(--header-title);
 }
@@ -167,36 +183,28 @@ footer a:hover {
   color: var(--header-title);
 }
 
+.blog-title {
+  margin: 1em auto;
+}
+
 .blog-slogan {
   line-height: 2em;
   margin: auto 0.6em;
 }
 
-@media (max-width: 600px) {
-  html {
-    font-size: 10px;
-  }
-
-  header {
-    padding: 2em;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .blinkContainerConstant {
-    text-align: center;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
 .blinkContainerConstant {
-  margin: 2em auto;
+  margin: 1em auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.blinkLine {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .blinkInfinite {
@@ -216,20 +224,9 @@ footer a:hover {
   }
 }
 
-h1 {
-  font-size: rem;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
 main {
-  min-height: fit-content;
-  margin: 5em;
-  /* display: grid;
-  grid-template-columns: repeat(auto, fit-content);
-  gap: 3.5em; */
+  margin: auto;
+ 
 }
 
 .backBtn {
@@ -292,19 +289,8 @@ scale: 130%;
 
 }
 
-
-
-.gridbox {
-    height: 20em;
-    width: 75vw;
-    background-color: var(--header-bg);
-    border-radius: 20px;
-    box-shadow: 2px 2px 2px 0px rgb(55, 55, 55);
-
-}
-
 .loginSect {
-  margin: auto;
+  margin: 25% auto;
   display: flex;
   text-align: center;
   align-content: center;
@@ -318,13 +304,12 @@ scale: 130%;
   flex-direction: column;
 }
 
-.loginBtn, .signUpBtn, .logoutBtn, .addPost{
+button {
   align-self: center;
   margin: .5em;
   padding: .75em;
   border-radius: 10px;
   font-weight: boldest;
-  font-size: 1em;
   cursor: pointer;
   background-color: #333;
   color: white;
@@ -339,8 +324,13 @@ scale: 130%;
   transition: all .75s ease-out;
 }
 
+.logoutBtn {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
 input {
-  font-family: 'Press Start 2P', 'Roboto Serif';
+  font-family: 'Press Start 2P', 'Roboto Serif', monospace;
   margin: .25em;
   padding: 5px;
   /* width: 70%; */
@@ -356,7 +346,6 @@ margin: 2em;
 .signUpBox p, a{ 
   font-family: 'Press Start 2P', 'Roboto Serif';
   color: var(--header-title);
-  font-size: 1em;
   margin: auto;
   line-height: 1.25em;
 }
@@ -378,29 +367,32 @@ text-align: center;
 }
 
 #profilePicDefault {
+  margin: 1em;
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  box-shadow: 0px 0px 7px 7px var(--header-title);
 }
 
 .profilePage {
   display: flex;
-  position: relative;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: space-between;  
+
 }
 
 .profilePicBox {
-  display: block;
-  position: static;
-  left: 0;
-  top: 0;
+  margin: 3em auto;
   text-align: center;
-  border: solid 2px white;
+  border: solid 0px white;
   width: fit-content;
 }
 
 .welcomeUser {
   margin: auto;
-  padding: 2em;
+  padding: 1em;
   font-family: 'Press Start 2P', 'Roboto Serif';
   color: var(--header-title);
 }
@@ -409,8 +401,126 @@ text-align: center;
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: auto;
+  min-width: fit-content;
+  max-width: 95vw;
+  min-height: 200px;
+  line-height: 2em;
+  margin: 1em;
   background-color: var(--header-bg);
   border-radius: 20px;
-  width: 80%;
+  padding: 1em;
+  box-shadow: 2px 2px 2px 0px rgb(55, 55, 55);
+  border: solid 0px white;
+}
+
+.homepageBox {
+  display:grid;
+  min-height: fit-content;
+  width:fit-content;
+  grid-template-columns: repeat(auto, 4);
+  grid-template-rows: repeat(auto);
+justify-content: space-evenly;
+}
+
+
+.gridbox {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--header-bg);
+  color: var(--header-title);
+  padding: 1.5em;
+  margin: 1.4em;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 4x rgb(55, 55, 55);
+}
+
+.postTitle, .singlePost {
+  font-family: 'Roboto Serif', monospace;
+  line-height: 1.5em;
+  padding: 1em;
+}
+
+.readMore {
+margin: auto 0 0 auto;
+}
+
+@media (max-width: 700px) {
+  html {
+    font-size: 14px;
+  }
+
+  header, footer {
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+   }
+    
+   .profilePage {
+    display: flex;
+    flex-direction: column;
+justify-content: space-evenly;  
+  }
+
+  .blinkContainerConstant {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 10px;
+  }
+
+
+  header, footer {
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ .mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+ }
+  
+ .profilePage {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+    justify-content: center;
+
+}
+
+  .blinkContainerConstant {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .loginSect{
+    max-width: 95%;
+  }
+
+  .newPost {
+    margin: 5em auto;
+    width: auto;
+  }
+ 
 }

@@ -6,6 +6,7 @@ const withAuth = require('../../utils/auth');
 // GET /api/posts
 router.get('/', async (req, res) => {
 	try {
+		if(req.session.logged_in) {
 		const postData = await Post.findAll({
 			attributes: [
 				'id',
@@ -28,6 +29,9 @@ router.get('/', async (req, res) => {
 			],
 		});
 		res.status(200).json(postData);
+	} else {
+		res.render('login');
+	}
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -55,7 +59,7 @@ router.get('/:id', async (req, res) => {
 				},
 				{
 					model: Comment,
-					attributes: ['id', 'comment_content', 'post_id', 'user_id', 'created_at'],
+					attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
 				},
 			],
 		});
@@ -81,7 +85,7 @@ router.post('/', withAuth, async (req, res) => {
 		}
 		console.log(req.body);
 		const postData = await Post.create({
-			...req.body,
+			post_title: title, post_content: content,
 			// add OR statement so that if the user is logged in, the user_id is the session user_id, otherwise it is the user_id from the request body
 			user_id: req.session.user_id || req.body.user_id,
 		});

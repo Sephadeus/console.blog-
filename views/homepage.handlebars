@@ -1,6 +1,11 @@
+<div class="homepageBox">
+
 {{#each posts as |post|}}
 <article class="gridbox">
-    <h2>{{post.post_title}}</h2>
-    <p>{{post.post_content}}</p>
+    <h2 class="postTitle">{{post.post_title}}</h2>
+    <p class="singlePost">{{truncate_post post_content}}</p>
+    <button type="click" class="readMore" id="readMore">Read More</button>
 </article>
 {{/each}}
+
+</div>
