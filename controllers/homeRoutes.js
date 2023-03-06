@@ -97,7 +97,7 @@ router.get('/profile', withAuth, async (req, res) => {
 					model: Post,
 					attributes: [
 						'id',
-						'title',
+						'post_title',
 						'post_content',
 						'created_at',
 						'updated_at',
@@ -123,7 +123,7 @@ router.get('/profile', withAuth, async (req, res) => {
 			username: req.session.username,
 		});
 	} catch (err) {
-		res.status(500).json(err);
+		res.status(500).json(err.message);
 	}
 });
 

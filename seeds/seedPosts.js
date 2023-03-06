@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { Post } = require("../models");
 
 const posts = [
  {
@@ -6,7 +6,7 @@ const posts = [
     post_content: `JavaScript is a powerful programming language built for Netscape Navigator in 1995. All modern web browsers have since adopted it for adding functionality to websites and, more recently, web applications.
     Over the years since its inception, JavaScript has grown into a powerhouse. It is no longer only used by the web — it can now be found almost anywhere, including space.
     This post will discuss the origins, evolution, current landscape, and future of the JavaScript programming language. Without any further delay, let's jump right into the fun.`,
-    user_id: 0
+    user_id: 4
  },
  {
     post_title: 'An Introduction to Unreal Engine 5 and What It Does',

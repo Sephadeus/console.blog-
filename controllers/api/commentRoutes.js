@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: Post,
-					attributes: ['title'],
+					attributes: ['post_title'],
 				},
 			],
 		});

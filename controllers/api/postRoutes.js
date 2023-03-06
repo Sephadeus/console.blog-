@@ -10,14 +10,14 @@ router.get('/', async (req, res) => {
 			attributes: [
 				'id',
 				'post_content',
-				'title',
+				'post_title',
 				'created_at',
 				'updated_at',
 				// use raw MySQL aggregate function query to get a count of how many comments are on each post and return it under the name `comment_count`
-				[
-					sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
-					'comment_count',
-				],
+				// [
+				// 	sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
+				// 	'comment_count',
+				// ],
 			],
 			order: [['created_at', 'DESC']],
 			include: [
@@ -40,13 +40,13 @@ router.get('/:id', async (req, res) => {
 			attributes: [
 				'id',
 				'post_content',
-				'title',
+				'post_title',
 				'created_at',
 				'updated_at',
-				[
-					sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
-					'comment_count',
-				],
+				// [
+				// 	sequelize.literal('(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)'),
+				// 	'comment_count',
+				// ],
 			],
 			include: [
 				{

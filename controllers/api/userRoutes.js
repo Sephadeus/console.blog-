@@ -84,7 +84,8 @@ router.post('/', async (req, res) => {
 			res.json(userData);
 		});
 	} catch (err) {
-		res.status(500).json(err);
+		console.log(err.message);
+		res.status(500).json(err.message);
 	}
 });
 
@@ -118,7 +119,7 @@ router.post('/login', async (req, res) => {
 			res.json({ user: userData, message: 'You are now logged in!' });
 		});
 	} catch (err) {
-		res.status(500).json(err);
+		res.status(500).json(err.message);
 	}
 });
 

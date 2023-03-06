@@ -30,7 +30,9 @@
 </head>
   
     <header>
-
+{{#if logged_in}}
+<button id="logout" class="logoutBtn">Log Out</button>
+{{/if}}
       <div class="headliner">
       <h1 class="blog-title">
         Console.blog()
@@ -42,6 +44,9 @@
       <p class="blog-slogan">Together...</p>
        <div class="blinkInfinite"></div>
       </div>
+      {{#if logged_in}}
+      <h3 class="welcomeUser">Welcome back, {{username}}!</h3>
+      {{/if}}
     </div>
 
      <div class="dropdown">
@@ -52,13 +57,14 @@
           </button>
           <div id="dropdownContent" class="dropdownContent" value="hidden">
             <ul>
-              <li class="dropItem"><a href="/homepage" class="dropLink">Home</a></li>
+              <li class="dropItem"><a href="/" class="dropLink">Home</a></li>
               <li class="dropItem"><a href="/profile"  class="dropLink">Profile</a></li>
               <li class="dropItem"><a href="/posts" class="dropLink">Posts</a></li>
 
             </ul>
 
           </div>
+
      </div>
 
     </header>
@@ -72,7 +78,7 @@
         <ul>
             <li>
                 <div class="blinkContainer"> 
-                 <a href="/homepage" class="dropLink">Home</a>
+                 <a href="/" class="dropLink">Home</a>
                   <div class="blinkHover">
                 </div>
               </div>

@@ -34,9 +34,9 @@ a {
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  padding: 1.5em;
+  justify-content: space-evenly;
   width: 100%;
-  padding: 2em;
   background-color: var(--header-bg);
   word-spacing: 0.5em;
 }
@@ -318,20 +318,22 @@ scale: 130%;
   flex-direction: column;
 }
 
-.loginBtn, .signUpBtn{
+.loginBtn, .signUpBtn, .logoutBtn, .addPost{
+  align-self: center;
   margin: .5em;
   padding: .75em;
   border-radius: 10px;
   font-weight: boldest;
-  font-size: 25px;
+  font-size: 1em;
   cursor: pointer;
   background-color: #333;
   color: white;
   box-shadow: 2px 2px 1px 1px var(--header-title);
+  width: fit-content;
+  height: fit-content;
 } 
 
-.loginBtn:hover, .signUpBtn:hover {
-  font-size: 25px;
+.loginBtn:hover, .signUpBtn:hover, .logoutBtn:hover, .addPost:hover {
   box-shadow: none;
   scale: 98%;
   transition: all .75s ease-out;
@@ -373,4 +375,42 @@ text-align: center;
   margin: 2em;
   font-family: 'Press Start 2P', 'Roboto Serif';
   color: var(--header-title);
+}
+
+#profilePicDefault {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.profilePage {
+  display: flex;
+  position: relative;
+}
+
+.profilePicBox {
+  display: block;
+  position: static;
+  left: 0;
+  top: 0;
+  text-align: center;
+  border: solid 2px white;
+  width: fit-content;
+}
+
+.welcomeUser {
+  margin: auto;
+  padding: 2em;
+  font-family: 'Press Start 2P', 'Roboto Serif';
+  color: var(--header-title);
+}
+
+.newPost {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  background-color: var(--header-bg);
+  border-radius: 20px;
+  width: 80%;
 }

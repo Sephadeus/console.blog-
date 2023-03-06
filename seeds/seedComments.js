@@ -1,30 +1,30 @@
-const { User } = require("../models");
+const { Comment } = require("../models");
 
-const users = [
+const comments = [
   {
     comment: 'I love javascript almost as much as I love coffee.',
     user_id: 2,
-    post_id: 0,
+    post_id: 1,
   },
   {
     comment: 'Javascript is a great first language to learn!',
     user_id: 3,
-    post_id: 0,
+    post_id: 1,
   },
   {
     comment: 'JS is sophisticated because it is so classy :P',
     user_id: 1,
-    post_id: 0,
+    post_id: 1,
   },
   {
     comment: 'CSS is more fun for styling webpages than Javascript, change my mind!',
     user_id: 5,
-    post_id: 0,
+    post_id: 1,
   },
   {
     comment: `You're crazy, JS is way more dynamic!! PLUS, more frameworks than you can count!!! NO QUESTION!`,
     user_id: 2,
-    post_id: 0,
+    post_id: 1,
   },
   {
     comment: 'Have you guys seen all these concept games being demonstrated on Unreal Engine 5? The graphics are... like... hyper real.',
@@ -33,7 +33,7 @@ const users = [
   },
   {
     comment: `Imagine when VR games start coming out using UE5? I think I'd quit gaming before we all get sucked into the Matrix or something.`,
-    user_id: 0,
+    user_id: 4,
     post_id: 1,
   },
   {
@@ -87,6 +87,6 @@ const users = [
   },
 ];
 
-const seedUsers = () => User.bulkCreate(users, { individualHooks: true, returning: true });
+const seedComments = () => Comment.bulkCreate(comments, { individualHooks: true, returning: true });
 
-module.exports = seedUsers;
+module.exports = seedComments;
