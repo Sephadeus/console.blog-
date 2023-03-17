@@ -29,6 +29,8 @@ router.get("/", async (req, res) => {
       const posts = postData.map((post) => post.get({ plain: true }));
 
       res.render("homepage", { posts });
+    } else {
+      res.render("login");
     }
   } catch (err) {
     res.render("login");
@@ -150,7 +152,7 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.render("profile");
     return;
   }
 

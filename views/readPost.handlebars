@@ -1,0 +1,21 @@
+<div>
+    <h2>{{post_title}}</h2>
+    <h3>By {{user.username}}</h3>
+    <hr/><br/>
+    <p>{{post_content}}</p>
+
+
+<div class="commentsBox">
+        {{#each comments as |comment|}}
+        <div> 
+            <span>{{comments.user.username}}</span>
+            <p class="comment">{{comment.comment}}</p>
+        </div>
+        {{/each}}
+        <div>
+            <p>{{username}}</p>
+            <input type="text" class="comment" placeholder="Write your comment here"/>
+            <button type="submit" id="addComment">Comment</button>
+        </div>
+    </div>
+    </div>

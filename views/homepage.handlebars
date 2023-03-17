@@ -2,10 +2,12 @@
 
 {{#each posts as |post|}}
 <article class="gridbox">
-    <h2 class="postTitle">{{post.post_title}}</h2>
+    <h2 class="postTitle">{{post_title}} <br/>by {{user.username}}</h2>
     <p class="singlePost">{{truncate_post post_content}}</p>
-    <button type="click" class="readMore" id="readMore">Read More</button>
+    <button><a class="readPost" href="/post/{{id}}">Read More</a>
+    </button>
 </article>
 {{/each}}
-
 </div>
+
+{{!-- <script src="js/readPost.js"></script> --}}

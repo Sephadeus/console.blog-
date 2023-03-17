@@ -77,23 +77,24 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/posts
 router.post('/', withAuth, async (req, res) => {
-	// expects {title: 'title', post_content: 'big blob of text', user_id: 'number'}
+
+	console.log(req.body);
 	try {
 		if (!req.session) {
 			res.status(404).json({ message: 'No session found!' });
 			return;
 		}
-		console.log(req.body);
+		console.log(req.body.title);
 		const postData = await Post.create({
-			post_title: title, post_content: content,
+			post_title: req.body.title, post_content: req.body.content,
 			// add OR statement so that if the user is logged in, the user_id is the session user_id, otherwise it is the user_id from the request body
 			user_id: req.session.user_id || req.body.user_id,
 		});
 		console.log(postData);
 		res.status(200).json(postData);
-	} catch (err) {
-		console.log(err);
-		res.status(400).json(err);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json(error.message);
 	}
 });
 

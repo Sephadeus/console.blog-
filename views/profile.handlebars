@@ -5,29 +5,27 @@
     <h3 class="welcomeUser" >{{username}}</h3>
     </div>
    
-   <div class="yourPosts">
+   <div class="myPosts">
+    <h3 class="welcomeUser">Your Posts</h3>
+    <div class="yourPosts"></div>
     {{#each posts as |post|}}
-    <article class="gridbox">
-    <h2 class="postTitle">{{post_title}}</h2>
-    <p class="singlePost">{{post_content}}</p>
+    <article class="gridbox userPost">
+
+    <h4 class="postTitle">{{post_title}}</h4>
+    <hr>
+    <button type="click" id="deletePost" data={{post.id}}>Delete</button>
 </article>
 {{/each}}
    </div>
 
 
-   <div class="newPost">
+   <div class="newPost ">
     <h3  class="welcomeUser">Share a New Post</h3>
     <input type="text" placeholder="Title this post" name="title" id="postTitle">
         <textarea type="textarea" placeholder="Write your post here" name="mainPost" id="postContent"></textarea>
         <button id="addPost" type="button" class="addPost">Add Post</button>
    </div>
 
-   <div class="newPost">
-    <h3  class="welcomeUser">Delete a Post</h3>
-    {{!-- <input type="text" placeholder="Title this post" name="title" id="postTitle">
-        <textarea type="textarea" placeholder="Write your post here" name="mainPost" id="postContent"></textarea> --}}
-        <button id="deletePost" type="button" class="deletePost">Delete Post</button>
-   </div>
 
       <div class="newPost">
     <h3  class="welcomeUser">Update a Post</h3>
@@ -39,3 +37,4 @@
 </div>
 
 <script src="/js/addPost.js"></script>
+<script src="/js/deletePost.js"></script>
