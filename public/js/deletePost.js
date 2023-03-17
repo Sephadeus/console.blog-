@@ -16,4 +16,5 @@ document.location.reload();
 
 }
 
-document.getElementById('deletePost').addEventListener("click", deletePost);
+const deletePostBtn = document.getElementById('deletePost');
+deletePostBtn.addEventListener("click", deletePost);

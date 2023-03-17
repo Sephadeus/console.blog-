@@ -168,4 +168,11 @@ router.get("/thankyou", (req, res) => {
   res.render("thankyou");
 });
 
+router.get("/editPost", async (req, res) => {
+  const getPost = await fetch(`/api/posts/${id}`, {
+    
+  })
+  res.render("editPost");
+});
+
 module.exports = router;

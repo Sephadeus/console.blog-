@@ -13,7 +13,10 @@
 
     <h4 class="postTitle">{{post_title}}</h4>
     <hr>
-    <button type="click" id="deletePost" data={{post.id}}>Delete</button>
+   
+   <button><a href='/editPost'>Update Post</a></button>
+
+    <button type="click" id="deletePost" data={{id}}>Delete</button>
 </article>
 {{/each}}
    </div>
@@ -27,14 +30,9 @@
    </div>
 
 
-      <div class="newPost">
-    <h3  class="welcomeUser">Update a Post</h3>
-    {{!-- <input type="text" placeholder="Title this post" name="title" id="postTitle">
-        <textarea type="textarea" placeholder="Write your post here" name="mainPost" id="postContent"></textarea> --}}
-        <button id="editPost" type="button" class="editPost">Update Post</button>
-   </div>
-
+  
 </div>
 
 <script src="/js/addPost.js"></script>
 <script src="/js/deletePost.js"></script>
+

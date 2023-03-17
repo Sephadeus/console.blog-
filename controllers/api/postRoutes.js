@@ -70,6 +70,7 @@ router.get('/:id', async (req, res) => {
 		}
 
 		res.status(200).json(postData);
+		res.render('editPost');
 	} catch (err) {
 		res.status(500).json(err);
 	}

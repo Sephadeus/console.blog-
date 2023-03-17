@@ -56,6 +56,23 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/comments
 //router.post('/', async (req, res) => {
+// router.post('/', withAuth, async (req, res) => {
+// 	try {
+// 		if (!req.session) {
+// 			res.status(400).json({ message: 'You must be logged in to post a comment!' });
+// 			return;
+// 		}
+// 		const commentData = await Comment.create({
+// 			comment: req.body.comment,
+// 			post_id: req.body.post_id,
+// 			user_id: req.body.user_id,
+// 		});
+// 		res.status(200).json(commentData);
+// 	} catch (err) {
+// 		res.status(400).json(err);
+// 	}
+// });
+
 router.post('/', withAuth, async (req, res) => {
 	try {
 		if (!req.session) {
@@ -65,25 +82,9 @@ router.post('/', withAuth, async (req, res) => {
 		const commentData = await Comment.create({
 			comment: req.body.comment,
 			post_id: req.body.post_id,
-			user_id: req.body.user_id,
-		});
-		res.status(200).json(commentData);
-	} catch (err) {
-		res.status(400).json(err);
-	}
-});
-
-router.post('/new', withAuth, async (req, res) => {
-	try {
-		if (!req.session) {
-			res.status(400).json({ message: 'You must be logged in to post a comment!' });
-			return;
-		}
-		const commentData = await Comment.create({
-			comment_content: req.body.comment_content,
-			post_id: req.body.post_id,
 			user_id: req.session.user_id,
 		});
+		res.status(200).json(commentData);
 		console.log(commentData);
 		if (commentData) {
 			res.redirect(`/post/${req.body.post_id}`);
@@ -103,7 +104,7 @@ router.put('/:id', withAuth, async (req, res) => {
 		}
 		const commentData = await Comment.update(
 			{
-				comment_content: req.body.comment_content,
+				comment: req.body.comment,
 			},
 			{
 				where: {
