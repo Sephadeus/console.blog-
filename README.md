@@ -1,4 +1,4 @@
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![badge](https://img.shields.io/badge/javascript-75.7%25-orange) ![badge](https://img.shields.io/badge/Handlebars-11.1%25-yellow) ![badge](https://img.shields.io/badge/CSS5-13.2%25-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![badge](https://img.shields.io/badge/javascript-75.7%25-orange) ![badge](https://img.shields.io/badge/Handlebars-11.1%25-yellow) ![badge](https://img.shields.io/badge/CSS5-13.2%25-blue) ![badge](https://img.shields.io/github/commit-activity/m/Sephadeus/console.blog-?style=plastic)
 
   # Console.blog()
 
