@@ -25,6 +25,7 @@ body {
   background-color: var(--body-bg);
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }
 
 .mainContainer {
