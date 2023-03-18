@@ -43,20 +43,21 @@ Navigate to the blog here: https://console-blog.herokuapp.com
   
 ## Usage
 
+### Login
 ![2023-03-18 16 45 16 console-blog herokuapp com cc42184d7c73](https://user-images.githubusercontent.com/90430093/226138590-6435fe8c-06cc-4e3c-bb89-ca4b55415d50.jpg)
 
-###Login
  Once on the login page, click Sign Up and create an account if you don't have one. 
 
+### Sign Up
 ![2023-03-18 16 48 27 console-blog herokuapp com 5fd5a366b72a](https://user-images.githubusercontent.com/90430093/226138710-fa1273a9-df76-479f-a3ce-275d4be07d51.jpg)
 
-###Sign Up
 Click submit and you'll be brought to the thank you page where you can 'continue to my profile'. 
 
+###Profile
 ![2023-03-18 16 52 28 console-blog herokuapp com fe847afe0fb1](https://user-images.githubusercontent.com/90430093/226139135-e2b7b5f1-5478-48b1-be35-041ae18850b6.jpg)
 
-###Profile
-3. From here, you can write a new blog post to share, edit or delete old posts of yours, or scroll down and click Home to see all the blog posts on the homepage. 
+
+From here, you can write a new blog post to share, edit or delete old posts of yours, or scroll down and click Home to see all the blog posts on the homepage. 
 
 ##Homepage
 Click Read More to view an article/post. When you're done reading, you can leave a comment, and even delete the comments of yourself or others!  
