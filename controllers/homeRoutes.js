@@ -47,13 +47,6 @@ router.get("/post/:id", async (req, res) => {
         "post_title",
         "created_at",
         "updated_at",
-        // use raw MySQL aggregate function query to get a count of how many comments are on each post and return it under the name `comment_count`
-        [
-          sequelize.literal(
-            "(SELECT COUNT(*) FROM comment WHERE post.id = comment.post_id)"
-          ),
-          "comment_count",
-        ],
       ],
       include: [
         {
@@ -97,21 +90,6 @@ router.get("/profile", withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: {
         exclude: ["password"],
-        include: [
-          // sql query that will return total number of posts and comments for each user
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM post WHERE user.id = post.user_id)"
-            ),
-            "post_count",
-          ],
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM comment WHERE user.id = comment.user_id)"
-            ),
-            "comment_count",
-          ],
-        ],
       },
       include: [
         {
