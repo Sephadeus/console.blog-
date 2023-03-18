@@ -90,7 +90,7 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
-// GET dashboard
+// GET profile
 router.get("/profile", withAuth, async (req, res) => {
   try {
     // find the logged in user based on the session ID
@@ -168,11 +168,34 @@ router.get("/thankyou", (req, res) => {
   res.render("thankyou");
 });
 
-router.get("/editPost", async (req, res) => {
-  const getPost = await fetch(`/api/posts/${id}`, {
-    
-  })
-  res.render("editPost");
+router.get("/editPost/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      attributes: [
+        "id",
+        "post_content",
+        "post_title",
+        "created_at",
+        "updated_at",
+      ],
+    });
+
+if(postData){
+    const post = postData.get({ plain: true });
+    res.render("editPost", { post });
+} else {
+  alert("This post could not be found. Either it got deleted or something went wrong with the server.");
+  document.location.reload();
+}
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+router.get('*', (req, res)=> {
+  res.render("notFound");
+})
+
 
 module.exports = router;

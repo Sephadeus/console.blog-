@@ -1,11 +1,26 @@
+    
+<div class="backBtn">
+  <i class="backArrow"></i>
+  <a class="backBtnLink" href="/profile">
+  Go Back
+  </a>
+  </div>
+
+
 <div class="gridbox">
 
-    <article class="readPost">
-    <input type="text"  data={{post.id}}>{{post.post_title}}</input>
-    
-    <textarea  data={{post.id}}>{{post.post_content}}</textarea>
-    </article>
+    <form class="editPost">
+        <label for="title">Edit Title</label>
+        <textarea id="updateTitle" data={{post.id}}>{{post.post_title}}</textarea>
+    <br/>
+       <label for="content">Edit Content</label>
+        <textarea id="updateContent" data={{post.id}}>{{post.post_content}}</textarea>
+        <button type="click" data={{post.id}} id="editPost">Update</button>
+        <button type="click" id="deletePost" data={{post.id}}>Delete</button>
+
+    </form>
 
     </div>
 
     <script src="/js/editPost.js"></script>
+    <script src="/js/deletePost.js"></script>

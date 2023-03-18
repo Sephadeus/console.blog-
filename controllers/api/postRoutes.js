@@ -70,7 +70,6 @@ router.get('/:id', async (req, res) => {
 		}
 
 		res.status(200).json(postData);
-		res.render('editPost');
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -109,7 +108,8 @@ router.put('/:id', withAuth, async (req, res) => {
 		}
 		const postData = await Post.update(
 			{
-				...req.body,
+					post_title: req.body.post_title, 
+					post_content: req.body.post_content
 			},
 			{
 				where: {

@@ -1,27 +1,43 @@
 <div class="gridbox">
 
-    <article class="readPost">
+  <article class="readPost">
     <h2 class="postTitle">{{post_title}}</h2>
-    <h3 class="postTitle">Written by {{user.username}} on {{format_date created_at}}</h3>
-    <hr/><br/>
+    <h3 class="postTitle">Written by
+      {{user.username}}
+      on
+      {{format_date created_at}}</h3>
+    <hr /><br />
     <p class="singlePost">{{post_content}}</p>
-    </article>
+  </article>
 
+  <div class="commentsBox">
 
-<div class="commentsBox">
     <h4 class="welcomeUser">Comments</h4>
-        {{#each comments as |comment|}}
-        <div class="commentBox"> 
-            <p class="comment username">{{user.username}}: </p>
-            <p class="comment">{{comment.comment}}</p>
-        </div>
-        {{/each}}
-        <div>
-            <p>{{username}}</p>
-            <input type="text" id="commentToAdd" class="comment" placeholder="Write your comment"/>
-            <button type="submit" id="addComment">Comment</button>
-        </div>
-    </div>
-    </div>
+    {{#each comments as |comment|}}
+      <div class="commentBox">
+        <p class="comment username">{{user.username}}: </p>
+        <p class="comment">{{comment.comment}}</p>
 
-    <script src="/js/addComment.js"></script>
+        <button class="deleteBtn" data={{comment.id}}><img
+            class="trash"
+            src="https://cdn.pixabay.com/photo/2017/04/10/12/19/trashcan-2218369__180.jpg"
+          /></button>
+
+      </div>
+    {{/each}}
+    <div>
+      <p>{{username}}</p>
+      <input
+        type="text"
+        id="commentToAdd"
+        class="comment"
+        placeholder="Write your comment"
+        data={{id}}
+      />
+      <button type="submit" id="addComment" data={{id}}>Comment</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/addComment.js"></script>
+<script src="/js/deleteComment.js"></script>

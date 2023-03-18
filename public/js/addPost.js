@@ -15,9 +15,8 @@ const addPost = async (e) => {
     });
     if(res.ok) {
 alert('Thanks for sharing! Your post has been submitted!');
-title = '';
-content = '';
-document.location.reload();
+
+document.location.replace('/profile');
     } else {
         console.error();
         alert(res.statusText);

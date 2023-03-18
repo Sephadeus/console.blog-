@@ -14,9 +14,9 @@
     <h4 class="postTitle">{{post_title}}</h4>
     <hr>
    
-   <button><a href='/editPost'>Update Post</a></button>
+   <button type="click" data={{id}}><a href="/editPost/{{id}}">Update/Delete</a></button>
 
-    <button type="click" id="deletePost" data={{id}}>Delete</button>
+    {{!-- <button type="click" data={{id}}>Delete</button> --}}
 </article>
 {{/each}}
    </div>
@@ -34,5 +34,7 @@
 </div>
 
 <script src="/js/addPost.js"></script>
-<script src="/js/deletePost.js"></script>
+{{!-- <script src="/js/deletePost.js"></script> --}}
+{{!-- <script src="/js/prepareEdit.js"></script> --}}
+
 

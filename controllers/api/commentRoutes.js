@@ -82,13 +82,10 @@ router.post('/', withAuth, async (req, res) => {
 		const commentData = await Comment.create({
 			comment: req.body.comment,
 			post_id: req.body.post_id,
-			user_id: req.session.user_id,
+			user_id: req.session.user_id
 		});
 		res.status(200).json(commentData);
 		console.log(commentData);
-		if (commentData) {
-			res.redirect(`/post/${req.body.post_id}`);
-		}
 	} catch (err) {
 		res.status(400).json(err);
 	}
@@ -126,7 +123,7 @@ router.put('/:id', withAuth, async (req, res) => {
 
 // DELETE /api/comments/:id
 // router.delete('/:id', async (req, res) => {
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
 	try {
 		if (!req.session) {
 			res.status(400).json({ message: 'You must be logged in to delete a comment!' });
